@@ -1,0 +1,7 @@
+release:
+  name: byllc-nginx
+
+github:
+  username: byllc
+  branch: master
+  repository: (( concat "https://github.com/" github.username "/concourse-tutorial.git" ))

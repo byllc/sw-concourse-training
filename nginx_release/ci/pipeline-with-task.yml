@@ -1,0 +1,22 @@
+---
+jobs:
+- name: job-upload-release
+  public: true
+  plan:
+  - task: upload-release
+    config:
+      platform: linux
+      image_resource:
+        type: docker-image
+        source: {repository: starkandwayne/concourse}
+      get: source-code
+        params: { depth: 1 }
+      run:
+        path: ./tasks/upload-release.sh
+
+resources:
+- name: source-code
+  type: git
+  source:
+    uri: (( github.repository ))
+    branch: (( github.branch ))
