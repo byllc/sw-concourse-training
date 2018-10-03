@@ -16,7 +16,7 @@ upgrade the Hello World bosh release that is deployed in that session.
 
 * Fork this repository in to your own github account
 * Clone your fork of this repository locally
-  * `git clone https://github.com/$GITHUB_USERNAME/concourse-training.git`
+  * `git clone git@github.com/$GITHUB_USERNAME/concourse-training.git`
 
 
 ###Create your release
@@ -38,11 +38,7 @@ working state.  We'll want to create that release again here and push it back to
 git commit -am 'updated release for deployment'
 git push
 ```
-
-### An Initial Deployment Pipeline
-Again, we are going to use spruce to generate an initial pipeline.yml. This is the most basic Pipeline
-configuration.
-  * `spruce merge  ci/settings.yml ci/nginx-deploy-pipeline.yml > ci/pipeline.yml`
+fly -t concourse-tutorial set-pipeline -c ci/pipeline.yml -p ${GITHUB_USERNAME}-pipeline
 
 ### Installing the `fly` Command
 Visit <CONCOURE_URL> and get the URL from the lower right
@@ -65,6 +61,7 @@ fly --target concourse-tutorial   login --concourse-url $CONCOURSE_PIPELINE_URL 
 ## Lab 2: Building Our first Tasks
 * Open ci/tasks/upload-release.sh
 * Add the following environment variables, provided by the course proctor
+
 ```bash
   export BOSH_DEPLOYMENT=<deployment name>
   export BOSH_DIRECTOR=<bosh director url>
@@ -74,4 +71,10 @@ fly --target concourse-tutorial   login --concourse-url $CONCOURSE_PIPELINE_URL 
 ```
 The rest of the task should look familiar if you've been through the BOSH training course
 But we need to actually make sure our pipeline knows how to access this release.
-* Add the following to your pipeline.yml
+
+### Add the task to the pipeline yml
+Have a look at ci/nginx-pipeline-with-task.yml, and we'll merge those changes in to your pipeline
+`spruce merge --prune github --prune release  ci/settings.yml ci/nginx-pipeline-with-task.yml > ci/pipeline.yml`
+
+### Update the pipeline
+* fly -t concourse-tutorial set-pipeline -c ci/pipeline.yml -p ${GITHUB_USERNAME}-pipeline

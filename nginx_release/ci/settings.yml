@@ -4,4 +4,4 @@ release:
 github:
   username: byllc
   branch: master
-  repository: (( concat "https://github.com/" github.username "/concourse-tutorial.git" ))
+  repository: (( concat "https://github.com/" github.username "/sw-concourse-training.git" ))

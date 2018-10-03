@@ -1,14 +1,23 @@
----
 jobs:
 - name: job-upload-release
-  public: true
   plan:
-  - task: upload-release
-    config:
-      platform: linux
+  - get: source-code
+    params:
+      depth: 1
+  - config:
       image_resource:
+        source:
+          repository: starkandwayne/concourse
         type: docker-image
-        source: {repository: starkandwayne/concourse}
+      platform: linux
       run:
-        path: echo
-        args: Eventually, I will upload a bosh release
+        path: ./tasks/upload-release.sh
+    task: upload-release
+  public: true
+resources:
+- name: source-code
+  source:
+    branch: master
+    uri: git@github.com:byllc/sw-concourse-training.git
+  type: git
+
