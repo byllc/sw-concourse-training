@@ -13,7 +13,10 @@ jobs:
         source: {repository: starkandwayne/concourse}
       run:
         path: ./nginx_release/ci/tasks/upload-release.sh
-  - task: upload-release
+      inputs:
+        - name: source-code
+
+  - task: deploy-release
     config:
       platform: linux
       image_resource:
@@ -21,6 +24,8 @@ jobs:
         source: {repository: starkandwayne/concourse}
       run:
         path: source-code/nginx_release/ci/tasks/deploy-release.sh
+      inputs:
+        - name: source-code
 
 
 resources:
