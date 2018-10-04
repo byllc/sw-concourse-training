@@ -19,4 +19,4 @@ bosh alias-env --ca-cert training-bosh.pem -e ${BOSH_DIRECTOR} training-bosh
 
 bosh login
 
-bosh upload-release ${WORKSPACE}/releases/release.gz
+bosh upload-release ${WORKSPACE}/nginx_release/releases/release.gz
