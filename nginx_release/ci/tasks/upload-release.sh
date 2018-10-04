@@ -14,9 +14,8 @@ export WORKSPACE=`pwd`
 
 cd source-code/nginx_release
 
-ls -lah
-
-bosh alias-env --ca-cert ${WORKSPACE}/cert-file/training-bosh.pem -e ${BOSH_DIRECTOR} training-bosh
+curl -LO https://unreal-snw.s3.amazonaws.com/training-bosh.pem
+bosh alias-env --ca-cert training-bosh.pem -e ${BOSH_DIRECTOR} training-bosh
 
 bosh login
 
