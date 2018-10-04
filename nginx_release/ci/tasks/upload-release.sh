@@ -10,7 +10,6 @@ export BOSH_DIRECTOR=https://10.200.192.0:25555/
 export BOSH_CLIENT=admin
 export BOSH_CLIENT_SECRET=agile-defense
 export BOSH_ENVIRONMENT=training-bosh
-export WORKSPACE=`pwd`
 
 cd source-code/nginx_release
 
@@ -19,4 +18,4 @@ bosh alias-env --ca-cert training-bosh.pem -e ${BOSH_DIRECTOR} training-bosh
 
 bosh login
 
-bosh upload-release ${WORKSPACE}/source-code/nginx_release/releases/release.gz
+bosh upload-release releases/release.gz
