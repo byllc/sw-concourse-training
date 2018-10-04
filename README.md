@@ -1,4 +1,4 @@
-#Concourse Training Labs
+# Concourse Training Labs
 Support release and pipeline templates for Stark &amp; Wayne Concourse training single day Session.
 
 This training session build off of the two day BOSH course.  The goal of the training is to deploy and
@@ -77,8 +77,26 @@ Have a look at ci/nginx-pipeline-with-task.yml, and we'll merge those changes in
 `spruce merge --prune github --prune release  ci/settings.yml ci/nginx-pipeline-with-task.yml > ci/pipeline.yml`
 
 ### Update the pipeline
-* fly -t concourse-tutorial set-pipeline -c ci/pipeline.yml -p ${GITHUB_USERNAME}-pipeline
+* `fly -t concourse-tutorial set-pipeline -c ci/pipeline.yml -p ${GITHUB_USERNAME}-pipeline`
 
-### Refactor to use S3 Resource for PEM File
+## Lab 3: Add a Deploy Task to the release
+* Open ci/tasks/upload-release.sh
+* Add the following environment variables, provided by the course proctor
 
-### Deploy the Pipeline
+```bash
+  export BOSH_DEPLOYMENT=<deployment name>
+  export BOSH_DIRECTOR=<bosh director url>
+  export BOSH_ENVIRONMENT=<bosh director ip>
+  export BOSH_CLIENT=<bosh user>
+  export BOSH_CLIENT_SECRET=<bosh password>
+```
+### Deploy the Release
+* `spruce merge --prune github --prune release  ci/settings.yml ci/nginx-pipeline-with-deploy.yml > ci/pipeline.yml`
+* `fly -t concourse-tutorial set-pipeline -c ci/pipeline.yml -p ${GITHUB_USERNAME}-pipeline`
+
+
+
+### Extra Credit
+* Refactor the upload-release task to move the training-bosh.pem file in to a file
+or s3 resource
+* Point out as many security problems as you can in this release

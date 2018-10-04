@@ -12,10 +12,9 @@ jobs:
         type: docker-image
         source: {repository: starkandwayne/concourse}
       run:
-        path: ./nginx_release/ci/tasks/upload-release.sh
+        path: source-code/nginx_release/ci/tasks/upload-release.sh
       inputs:
         - name: source-code
-
   - task: deploy-release
     config:
       platform: linux
@@ -26,7 +25,6 @@ jobs:
         path: source-code/nginx_release/ci/tasks/deploy-release.sh
       inputs:
         - name: source-code
-
 
 resources:
 - name: source-code
