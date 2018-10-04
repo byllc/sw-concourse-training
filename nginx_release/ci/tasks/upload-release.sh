@@ -13,11 +13,10 @@ export BOSH_ENVIRONMENT=training-bosh
 
 cd source-code/nginx_release
 
-bosh --version
+ls -lah
 
-curl -LO https://unreal-snw.s3.amazonaws.com/training-bosh.pem
-bosh alias-env --ca-cert training-bosh.pem -e $BOSH_DIRECTOR training-bosh
+#bosh alias-env --ca-cert ~/cert-file/training-bosh.pem -e $BOSH_DIRECTOR training-bosh
 
-bosh login
+#bosh login
 
-bosh upload-release
+#bosh upload-release
