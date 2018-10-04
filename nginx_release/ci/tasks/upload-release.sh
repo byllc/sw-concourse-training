@@ -15,8 +15,8 @@ cd source-code/nginx_release
 
 ls -lah
 
-#bosh alias-env --ca-cert ~/cert-file/training-bosh.pem -e $BOSH_DIRECTOR training-bosh
+bosh alias-env --ca-cert ~/cert-file/training-bosh.pem -e $BOSH_DIRECTOR training-bosh
 
-#bosh login
+bosh login
 
-#bosh upload-release
+bosh upload-release
