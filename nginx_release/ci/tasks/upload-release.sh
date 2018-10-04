@@ -1,4 +1,4 @@
-#!/usr/bin/env bosh
+#!/usr/bin/env bash
 set -x
 #For the purpose of this tutorial, there are credentials being commited here.
 #This is on purpose and will be covered in the security tutorial.
