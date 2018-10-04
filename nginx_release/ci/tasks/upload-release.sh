@@ -11,7 +11,7 @@ export BOSH_CLIENT=admin
 export BOSH_CLIENT_SECRET=agile-defense
 export BOSH_ENVIRONMENT=training-bosh
 
-cd source-code
+cd source-code/nginx_release
 
 curl -LO https://unreal-snw.s3.amazonaws.com/training-bosh.pem
 bosh alias-env --ca-cert training-bosh.pem -e $BOSH_DIRECTOR training-bosh
