@@ -80,3 +80,5 @@ Have a look at ci/nginx-pipeline-with-task.yml, and we'll merge those changes in
 * fly -t concourse-tutorial set-pipeline -c ci/pipeline.yml -p ${GITHUB_USERNAME}-pipeline
 
 ### Refactor to use S3 Resource for PEM File
+
+### Deploy the Pipeline
