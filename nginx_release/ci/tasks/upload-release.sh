@@ -1,5 +1,5 @@
 #!/usr/bin/env bosh
-set -x 
+set -x
 #For the purpose of this tutorial, there are credentials being commited here.
 #This is on purpose and will be covered in the security tutorial.
 #The director is expected to be secured and only locally available for this lab session
@@ -18,6 +18,6 @@ bosh --version
 curl -LO https://unreal-snw.s3.amazonaws.com/training-bosh.pem
 bosh alias-env --ca-cert training-bosh.pem -e $BOSH_DIRECTOR training-bosh
 
-bosh login --non-interactive
+bosh login
 
 bosh upload-release
